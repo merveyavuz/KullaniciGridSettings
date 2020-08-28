@@ -1,0 +1,101 @@
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.2/css/bootstrap.min.css" integrity="sha384-y3tfxAZXuh4HwSYylfB+J125MxIs6mR5FOHamPBG064zB+AFeWH94NdvaCBm8qnd" crossorigin="anonymous">
+
+<div class ="scroller">
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-12 text-center">
+      <h5>GridSettings Converter</h5>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-12 text-center">
+      <p>Convert butonuna basıldığında POJO class'ı KullanıcıGridSettings formatına çevirir. Listede sıra değişince json güncellenir.</p>
+    </div>
+  </div>
+  <div class="row" id="all_tools">
+    <div class="col-md-12">
+      <div class="row" style="overflow:hidden;">
+        <div class="col-md-4">
+          <div class="app_cat_h">POJO CLASS</div>
+          <ul class="app_cat_ul">
+            <textarea rows="10" [(ngModel)]="pojoText"></textarea>
+          </ul>
+          <ul class="app_cat_ul">
+            <button igxButton="raised" (click)= "convert()" igxButtonBackground="#72da67">CONVERT</button>
+            <button style = "margin-left: 10px" igxButton="raised" (click)= "idleriCikar()" igxButtonBackground="#72da67">ID'LERİ ÇIKAR</button>
+          </ul>
+        </div>
+
+
+        <div class="col-md-4">
+          <div class="app_cat_h">SETTING LIST</div>
+          <igx-list #listContainer>
+        <igx-list-item *ngFor="let setting of kullaniciGridSettings; index as targetIndex;"
+            #dragDirRef=drag
+            igxDrop
+            [igxDrag]="{ id: setting.order, dragged: false }"
+            (dragStart)="onDragStart($event, targetIndex)"
+            (dragMove)="onDragMove($event, targetIndex)"
+            (dragEnd)="onDragEnd($event, targetIndex)"
+            (transitioned)="onTransitioned($event, targetIndex)"
+            [ghost]="false"
+            [class.dragged]="dragDirRef.data && dragDirRef.data.dragged">
+                <h4 igxListLineTitle>{{setting.settingName}}</h4>
+                <!-- <h6 igxListLineSubTitle>{{setting.title}}</h6> -->
+                <igx-icon class="siralama" igxDragHandle igxListAction>drag_indicator</igx-icon>
+                <button igxButton="icon" (click)= "form.open(); openEdit(setting)"> 
+                  <igx-icon>edit</igx-icon>
+                </button>
+                <button igxButton="icon" (click)= "removeSetting(setting)"> 
+                  <igx-icon>delete</igx-icon>
+                </button>
+        </igx-list-item>
+          </igx-list>         
+        </div>
+
+        <div class="col-md-4">
+          <div class="app_cat_h">JSON</div>
+          <ul class="app_cat_ul">
+            <textarea rows="10" [(ngModel)]="jsonText"></textarea>
+          </ul>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<igx-dialog #form [closeOnOutsideSelect]="true">
+    <igx-dialog-title>
+        <div class="dialog-container">
+            <div class="dialog-title">Düzenle</div>
+        </div>
+    </igx-dialog-title>
+
+    <div class="signInForm" style= "margin-left: 10px">
+        <igx-input-group>
+            <label igxLabel for="setting">Setting</label>
+            <input [(ngModel)]="selectedSettingName" igxInput id="setting" type="setting" readonly/>
+        </igx-input-group>
+        <igx-input-group>
+            <label igxLabel>Type</label>
+            <input [(ngModel)]="selectedType" igxInput id="type" type="type"/>
+        </igx-input-group>
+        <igx-checkbox style ="margin-top: 10px" [(ngModel)]="hidden"> hidden
+        </igx-checkbox>
+        <igx-select #select>
+        <label igxLabel>Simple Select</label>
+        <igx-select-item *ngFor="let item of items" [value]="item" >
+            {{item}}
+        </igx-select-item>
+</igx-select>
+
+    </div>
+
+    <div igxDialogActions>
+        <button igxButton (click)="form.close()">IPTAL</button>
+        <button igxButton (click)="form.close(); updateSetting();">KAYDET</button>
+    </div>
+</igx-dialog>
+
+</div>

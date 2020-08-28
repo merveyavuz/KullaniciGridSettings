@@ -66,7 +66,7 @@
 </div>
 
 <igx-dialog #form [closeOnOutsideSelect]="true">
-    <igx-dialog-title>
+    <!-- <igx-dialog-title>
         <div class="dialog-container">
             <div class="dialog-title">Düzenle</div>
         </div>
@@ -77,25 +77,50 @@
             <label igxLabel for="setting">Setting</label>
             <input [(ngModel)]="selectedSettingName" igxInput id="setting" type="setting" readonly/>
         </igx-input-group>
-        <igx-input-group>
-            <label igxLabel>Type</label>
-            <input [(ngModel)]="selectedType" igxInput id="type" type="type"/>
-        </igx-input-group>
-        <igx-checkbox style ="margin-top: 10px" [(ngModel)]="hidden"> hidden
+          <igx-checkbox style ="margin-top: 10px" [(ngModel)]="hidden"> hidden
         </igx-checkbox>
-        <igx-select #select>
+          <igx-select #select [(ngModel)]="selectedType">
         <label igxLabel>Simple Select</label>
-        <igx-select-item *ngFor="let item of items" [value]="item" >
+        <igx-select-item *ngFor="let item of items"  [value]="item" >
             {{item}}
         </igx-select-item>
-</igx-select>
-
+        </igx-select>            
     </div>
 
     <div igxDialogActions>
         <button igxButton (click)="form.close()">IPTAL</button>
         <button igxButton (click)="form.close(); updateSetting();">KAYDET</button>
+    </div> -->
+    <div class="container">
+    <article class="sample-column">
+        <div class="input-group-form">
+            <igx-dialog-title>
+              <div class="dialog-container">
+                  <div class="dialog-title">Düzenle</div>
+              </div>
+            </igx-dialog-title>
+            <div class="container">
+              <igx-input-group>
+                <label igxLabel for="setting">Setting</label>
+                <input [(ngModel)]="selectedSettingName" igxInput id="setting" type="setting" readonly/>
+              </igx-input-group>
+              <igx-checkbox style ="margin-top: 10px" [(ngModel)]="hidden"> hidden
+              </igx-checkbox>
+              <igx-select #select [(ngModel)]="selectedType">
+                <label igxLabel>Simple Select</label>
+                <igx-select-item *ngFor="let item of items"  [value]="item" >
+                    {{item}}
+                </igx-select-item>
+              </igx-select>
+            </div>
+        </div>
+    </article>
+</div>
+    <div igxDialogActions>
+        <button igxButton (click)="form.close(); iptal();">IPTAL</button>
+        <button igxButton (click)="form.close(); updateSetting();">KAYDET</button>
     </div>
+
 </igx-dialog>
 
 </div>

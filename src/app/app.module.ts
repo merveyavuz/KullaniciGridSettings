@@ -36,7 +36,8 @@ import { ListReorderSampleComponent } from "./drag-drop/list-reorder-sample/list
 		IgxDialogModule,
 		IgxInputGroupModule,    
 		IgxCheckboxModule,
-		IgxSelectModule
+		IgxSelectModule,
+    FormsModule
   ],
   providers: [],
   entryComponents: [],

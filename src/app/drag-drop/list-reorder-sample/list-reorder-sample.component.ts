@@ -38,6 +38,7 @@ export class ListReorderSampleComponent {
     selectedType;
     hidden: boolean;
     public items: string[] = ["string", "boolean", "date", "number"];
+    selectedSType;
 
     convert(){
       this.kullaniciGridSettings = [];
@@ -110,6 +111,13 @@ export class ListReorderSampleComponent {
       this.selectedSetting = setting;
       this.selectedSettingName = setting.settingName;
       this.selectedType = setting.type;
+      this.hidden = false;
+    }
+
+    iptal(){
+       this.selectedSetting = "";
+      this.selectedSettingName = "";
+      this.selectedType = "";
     }
 
     updateSetting(){

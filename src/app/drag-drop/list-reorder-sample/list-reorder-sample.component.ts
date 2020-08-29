@@ -244,5 +244,17 @@ export class ListReorderSampleComponent {
 
       [this.kullaniciGridSettings[draggedIndex].order, 
       this.kullaniciGridSettings[targetIndex].order] = [this.kullaniciGridSettings[targetIndex].order, this.kullaniciGridSettings[draggedIndex].order];
+
+       this.kullaniciGridSettings.sort(this.compare);
     }
+
+    compare(a, b) {
+    if (a.order < b.order) {
+      return -1;
+    }
+    if (a.order > b.order) {
+      return 1;
+    }
+    return 0;
+  }
 }

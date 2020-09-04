@@ -41,7 +41,6 @@
             [ghost]="false"
             [class.dragged]="dragDirRef.data && dragDirRef.data.dragged">
                 <h4 igxListLineTitle>{{setting.settingName}}</h4>
-                <!-- <h6 igxListLineSubTitle>{{setting.title}}</h6> -->
                 <igx-icon class="siralama" igxDragHandle igxListAction>drag_indicator</igx-icon>
                 <button igxButton="icon" (click)= "form.open(); openEdit(setting)"> 
                   <igx-icon>edit</igx-icon>
@@ -66,31 +65,6 @@
 </div>
 
 <igx-dialog #form [closeOnOutsideSelect]="true">
-    <!-- <igx-dialog-title>
-        <div class="dialog-container">
-            <div class="dialog-title">Düzenle</div>
-        </div>
-    </igx-dialog-title>
-
-    <div class="signInForm" style= "margin-left: 10px">
-        <igx-input-group>
-            <label igxLabel for="setting">Setting</label>
-            <input [(ngModel)]="selectedSettingName" igxInput id="setting" type="setting" readonly/>
-        </igx-input-group>
-          <igx-checkbox style ="margin-top: 10px" [(ngModel)]="hidden"> hidden
-        </igx-checkbox>
-          <igx-select #select [(ngModel)]="selectedType">
-        <label igxLabel>Simple Select</label>
-        <igx-select-item *ngFor="let item of items"  [value]="item" >
-            {{item}}
-        </igx-select-item>
-        </igx-select>            
-    </div>
-
-    <div igxDialogActions>
-        <button igxButton (click)="form.close()">IPTAL</button>
-        <button igxButton (click)="form.close(); updateSetting();">KAYDET</button>
-    </div> -->
     <div class="container">
     <article class="sample-column">
         <div class="input-group-form">

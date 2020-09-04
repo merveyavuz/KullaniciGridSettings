@@ -9,16 +9,16 @@
   </div>
   <div class="row">
     <div class="col-md-12 text-center">
-      <p>Convert butonuna basıldığında POJO class'ı KullanıcıGridSettings formatına çevirir. Listede sıra değişince json güncellenir.</p>
+      <p>Convert butonuna basıldığında class'ı KullanıcıGridSettings json formatına çevirir. Listede sıra değişince json güncellenir.</p>
     </div>
   </div>
   <div class="row" id="all_tools">
     <div class="col-md-12">
       <div class="row" style="overflow:hidden;">
         <div class="col-md-4">
-          <div class="app_cat_h">POJO CLASS</div>
+          <div class="app_cat_h">CLASS</div>
           <ul class="app_cat_ul">
-            <textarea rows="10" [(ngModel)]="pojoText"></textarea>
+            <textarea rows="10" [(ngModel)]="classText"></textarea>
           </ul>
           <ul class="app_cat_ul">
             <button igxButton="raised" (click)= "convert()" igxButtonBackground="#72da67">CONVERT</button>

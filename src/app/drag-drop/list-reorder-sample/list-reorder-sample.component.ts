@@ -23,7 +23,7 @@ export class ListReorderSampleComponent {
 
     @ViewChild("listContainer", { read: ElementRef })
     public listContainer: ElementRef;
-    pojoText ="public class User    {        public string Id { get; set; }        public string name { get; set; }         public string created_at { get; set; }        public string updated_at { get; set; }         public string email { get; set; }        public string testanadditionalfield { get; set; } }";
+    classText ="public class User    {        public string Id { get; set; }        public string name { get; set; }         public string created_at { get; set; }        public string updated_at { get; set; }         public string email { get; set; }        public string testanadditionalfield { get; set; } }";
 
   jsonText: string;
     public kullaniciGridSettings = [];
@@ -43,7 +43,7 @@ export class ListReorderSampleComponent {
     convert(){
       this.kullaniciGridSettings = [];
       this.Props = [];
-      var words = this.pojoText.match(/("[^"]+"|[^"\s]+)/g);
+      var words = this.classText.match(/("[^"]+"|[^"\s]+)/g);
    
       for(let i = 0; i< words.length; i++){
        if(words[i] === "string"){
